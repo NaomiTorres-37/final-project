@@ -94,6 +94,8 @@
             function loadJokeImages() {
                 const container = document.getElementById("imageContainer");
 
+                const randomPage =math.floor(math.random() * 20) + 1;
+                
                 fetch("https://icanhazdadjoke.com/search?limit=20", {
                     headers: { "Accept": "application/json" }
             })
