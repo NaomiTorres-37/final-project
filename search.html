@@ -34,6 +34,15 @@
             text-align: center;
             padding: 10px 0;
         }
+        #searchTerm {
+            border: 2px solid #28a745;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+        #searchTerm:focus {
+            outline: none;
+            box-shadow: 0 0 5px #28a745;
+        }
         </style>
 
     </head>
@@ -70,7 +79,7 @@
 <div class="container my-4">
     <h2>Search for Dad Jokes</h2>
     <input  type="text" id="searchTerm" class="form-control mb-2" placeholder="Enter a keyword">
-    <button class="btn btn-light mb-3" onclick="searchJokes()">Search</button>
+    <button class="btn btn-success mb-3" onclick="searchJokes()">Search</button>
     <ul id="jokeList" class="list-group"></ul>
     </div>
     </div>
