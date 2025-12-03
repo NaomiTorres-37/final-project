@@ -14,6 +14,26 @@
         .navbar-green {
             background-color: #28a745;
         }
+
+        html, body {
+            height: 100%; 
+            margin: 0;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
         </style>
 
     </head>
@@ -22,6 +42,7 @@
 
 
     <body>
+        <div class="content">
         <nav class="navbar navbar-expand-lg navbar-dark navbar-green shadow-sm">
             <div class="container">
               <a class="navbar-brand" href="index.html">DAD JOKE API</a>
@@ -54,8 +75,10 @@
     <ul id="jokeList" class="list-group"></ul>
     </div>
 
+    <footer>
         <hr><!--horizontal rule-->
          <p> Dad Joke API | Naomi Torres | CSC 225 | FINAL PROJECT | 2025 </p>
+    </footer>
 
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
