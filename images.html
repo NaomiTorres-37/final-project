@@ -94,8 +94,8 @@
             function loadJokeImages() {
                 const container = document.getElementById("imageContainer");
 
-                fetch("https://icanhazdadjoke.com/search", {
-                    headers: { "accept": "application/json" }
+                fetch("https://icanhazdadjoke.com/search?limit=20", {
+                    headers: { "Accept": "application/json" }
             })
             .then(response => response.json())
             .then(data => {
