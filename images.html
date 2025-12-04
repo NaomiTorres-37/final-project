@@ -132,9 +132,9 @@
         </div>
     </div>
 
-        <div id="imgModal" class="modal">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img class="modal-content" id="modalImage">
+        <div id="imgModal" atyle="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-itmes:center;">
+            <span onclick="closeModal()" style="position:absolute; top:10px; right:20px; font-size:30px; color:white; cursor:pointer;">&times;</span>
+            <img id="modalImage" style="max-width:80%; max-height:80%; margin:auto; display:block; border-radius:10px;"/>
         </div>
 
         <footer>
@@ -150,16 +150,20 @@
 
                 const randomPage = Math.floor(Math.random() * 20) + 1;
 
-                fetch(`https://icanhazdadjoke.com/search?limit=20&page=${randomPage}`, {
+                fetch(`https://icanhazdadjoke.com/search?limit=30&page=${randomPage}`, {
                     headers: { "Accept": "application/json" }
             })
             .then(response => response.json())
             .then(data => {
                 container.innerHTML = ""; 
 
-                const jokes = data.results.slice(0,10);
+                const sortedJokes = data.results.sort((a,b) => a.joke.localeCompare(b.joke));
 
-                jokes.forEach(joke => {
+                const filteredJokes = sortedJokes.filter(j => j.joke.toLowerCase().includes("dog"));
+
+                const jokesToShow = filteredJokes.slice(0,10);
+
+                jokesToShow.forEach(joke => {
                     const img = document.createElement("img");
                     img.src = `https://icanhazdadjoke.com/j/${joke.id}.png`;
                     img.onclick = () => openModal(img.src);
