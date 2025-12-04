@@ -33,13 +33,6 @@
             text-align: center;
             padding: 10px 0;
         }
-        #imageContainer img {
-            max-width: 100%;
-            border-radius: 10px;
-            border: 2px solid #28a745;
-            background: white;
-            padding: 10px;
-        }
         #imageContainer {
             column-count: 3;
             column-gap: 20px
@@ -49,7 +42,39 @@
             width: 100%;
             display: block;
             margin-bottom: 10px;
+            border-radius: 10px;
             border: 2px solid #28a745;
+            background: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: auto;
+            overflow: auto;
+            background: rgba(0,0,0,0.7);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right:40px ;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+
+
         }
         @media (max-width: 768px) {
             #imageContainer {
@@ -104,6 +129,11 @@
         </div>
         </div>
 
+        <div id="imgModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
         <footer>
         <hr><!--horizontal rule-->
          <p> Dad Joke API | Naomi Torres | CSC 225 | FINAL PROJECT | 2025 </p>
@@ -115,7 +145,7 @@
             function loadJokeImages() {
                 const container = document.getElementById("imageContainer");
 
-                const randomPage =Math.floor(Math.random() * 20) + 1;
+                const randomPage = Math.floor(Math.random() * 20) + 1;
 
                 fetch(`https://icanhazdadjoke.com/search?limit=20&page=${randomPage}`, {
                     headers: { "Accept": "application/json" }
@@ -124,12 +154,12 @@
             .then(data => {
                 container.innerHTML = ""; 
 
-                data.results.forEach(joke => {
+                const jokes = data.results.slice(0,10);
+
+                jokes.forEach(joke => {
                     const img = document.createElement("img");
                     img.src = `https://icanhazdadjoke.com/j/${joke.id}.png`;
-                    img.style.width = "100%";
-                    img.style.display = "block";
-                    img.style.MarginBottom = "20px";
+                    img.onclick = () => openModal(img.src);
                     container.appendChild(img);
                 });
             })
@@ -137,6 +167,15 @@
                 container.innerHTML = "<p> Error loading images 😬 </p>";
                 console.error(err);
             });
+        }
+
+        function openModal(src) {
+            document.getElementById("modalImage").src = src;
+            document.getElementById("imgModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("imgModal").style.display = "none";
         }
         window.onload = loadJokeImages;
          </script>
