@@ -33,6 +33,12 @@
             text-align: center;
             padding: 10px 0;
         }
+
+        .pastel-card {
+            background-color: #c8f7d4;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+        }
         </style>
 
     </head>
@@ -68,7 +74,7 @@
         </div>
 
         <div class="container my-5">
-            <h2 class="mb-4">Random Dad Jokes</h2>
+            <h2 class="mb-4 text-center fw-bold display-6">Random Dad Jokes</h2>
 
             <div class="row" id="homeJokeCards"></div>
         </div>
@@ -101,7 +107,7 @@
                         col.className = "col-md-4 mb-3";
 
                         col.innerHTML = `
-                        <div class="card shadow-sm h-100" >
+                        <div class="card shadow-sm h-100 pastel-card" >
                             <div class="card-body">
                                 <h5 class ="card-title">Random Dad Joke</h5>
                                 <p class ="card-text">${joke.joke}</p>
