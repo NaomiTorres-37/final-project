@@ -115,7 +115,7 @@
             function loadJokeImages() {
                 const container = document.getElementById("imageContainer");
 
-                const randomPage =math.floor(Math.random() * 20) + 1;
+                const randomPage =Math.floor(Math.random() * 20) + 1;
 
                 fetch(`https://icanhazdadjoke.com/search?limit=20&page=${randomPage}`, {
                     headers: { "Accept": "application/json" }
@@ -129,7 +129,7 @@
                     img.src = `https://icanhazdadjoke.com/j/${joke.id}.png`;
                     img.style.width = "100%";
                     img.style.display = "block";
-                    img.style.margin = "20px auto";
+                    img.style.MarginBottom = "20px";
                     container.appendChild(img);
                 });
             })
