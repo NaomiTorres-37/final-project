@@ -73,7 +73,7 @@
             text-align: center;
             box-shadow: 0 0 20px rgba(0,0,0,0.3);
             position: relative;
-            animation: popIn 0.25s ease-out
+            animation: popIn 0.25s ease-out;
         }
            
         @keyframes popIn {
@@ -205,8 +205,11 @@
         }
 
         function openModal(src) {
-            document.getElementById("modalImage").src = src;
-            document.getElementById("imgModal").style.display = "block";
+            const modal = document.getElementById("modalImage");
+            const modalImg = document.getElementById("imgModal");
+
+            modalImg.src = src;
+            modal.style.display = "flex";
         }
 
         function closeModal() {
