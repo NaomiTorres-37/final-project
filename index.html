@@ -92,7 +92,9 @@
                 const container = document.getElementById("homeJokeCards");
 
                 fetch("https://icanhazdadjoke.com/search?limit=30" ,{
-                    headers: { "Accept": "application/json" }
+                    headers: { "Accept": "application/json",
+                    "User-Agent": "Naomi Dad Jokes App (mailto:naomi.torres@cix.csi.cuny.edu)"            
+                     }
                 })
                 .then(res => res.json())
                 .then(data => {
