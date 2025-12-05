@@ -93,15 +93,23 @@
 
          <script>
             function searchJokes() {
-                const term = document.getElementById("searchTerm").value;
+                const term = document.getElementById("searchTerm").value.trim();
                 const jokeList = document.getElementById("jokeList");
 
+                if (term ==="") {
+                    alert("Please enter any word to search!");
+                    return;
+                }
+
                 fetch(`https://icanhazdadjoke.com/search?term=${term}`,{
-                    headers: { "Accept": "application/json" }
+                    headers: { "Accept": "application/json",
+                        "User-Agent": "Naomi Dad Jokes App (mailto:naomi.torres@cix.csi.cuny.edu)"
+                     }
                 })
                 .then(response => response.json())
                 .then(data => {
                     jokeList.innerHTML = "";
+                    
                     if (data.results.length == 0) {
                         jokeList.innerHTML = "<li class= 'list-group-item'>No jokes found 😢 </li>";
                     } else {
