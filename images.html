@@ -215,7 +215,12 @@
         function closeModal() {
             document.getElementById("imgModal").style.display = "none";
         }
-        window.onload = loadJokeImages;
+        window.onload = function() {
+            
+            loadJokeImages();
+
+            document.getElementById("imgModal").style.display = "none";
+        };
          </script>
     </body>
 
