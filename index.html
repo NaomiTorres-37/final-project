@@ -146,14 +146,14 @@
                     .sort(() => Math.random() - 0.5)
                     .slice(0, 3);
 
-                    selected.forEach(joke => {
+                    selected.forEach((joke, index)  => {
                         const col = document.createElement("div");
                         col.className = "col-md-4 mb-3";
 
                         col.innerHTML = `
                         <div class="card shadow-sm h-100 pastel-card" >
                             <div class="card-body">
-                                <h5 class ="card-title card-title-green">Random Dad Joke</h5>
+                                <h5 class ="card-title card-title-green">Dad Joke ${index + 1}</h5>
                                 <p class ="card-text">${joke.joke}</p>
                         </div>
                         </div>
