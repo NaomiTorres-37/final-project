@@ -181,6 +181,7 @@
             <div class ="modal-card">
                 <span class="close-btn" onclick="closeModal()">&times;</span>
                 <img id="modalImage" />
+                <p id="modalText" style="display:none; color:#28a745; font-weight:bold;"></p>
             </div>
         </div>
         
@@ -238,7 +239,13 @@
         }
 
         function closeModal() {
-            document.getElementById("imgModal").style.display = "none";
+            const modal = document.getElementById("imgModal");
+            const modalImg = document.getElementById("modalImage");
+            const modalText = document.getElementById("modalText");
+
+            modal.style.display = "none";
+            modalImg.style.display = "block";
+            modalText.style.display = "none";
         }
         window.onload = function() {
             
@@ -248,24 +255,27 @@
         };
          </script>
 
+         <script>
+
          document.getElementById("easterEggBtn").onclick = () => {
             const jokes = [
                 "why did the scarecrow win an award> Because he was outstanding in his feild!",
                 "I only know 25 letters of the alphabet... i dont know y.",
                 "why don't skeletons fight each other? they don't have have the guts!"
             ];
-            const joke = jokes[Math.floor(math.random() * jokes.length)];
+            const joke = jokes[Math.floor(Math.random() * jokes.length)];
 
             const modal = document.getElementById("imgModal");
             const modalImg = document.getElementById("modalImage");
             const modalText = document.getElementById("modalText");
 
             modalImg.style.display= "none";
-            modelText.style.display = "block";
+            modalText.style.display = "block";
             modalText.textContent = joke;
 
             modal.style.display = "flex";
          };
+        </script>
     </body>
 
 
